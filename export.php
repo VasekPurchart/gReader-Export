@@ -68,12 +68,11 @@ file_put_contents(SUBSCRIPTIONS_FILE, $subscriptionsData);
 $jsonSubscriptions = json_decode($subscriptionsData);
 foreach ($jsonSubscriptions->subscriptions as $subscription) {
 	println($subscription->id);
-	$feedUrl = urlencode($subscription->id);
-	$dir = DATA_DIR . '/' . $feedUrl;
+	$dir = DATA_DIR . '/' . str_replace('/', '_', preg_replace('~feed/https?://~', '', $subscription->id));
 	if (file_exists($dir)) {
 		continue;
 	}
 	mkdir($dir);
-	$downloadUrl = FEED_BASE_URL . $feedUrl . '?n=' . FEED_LIMIT;
+	$downloadUrl = FEED_BASE_URL . urlencode($subscription->id) . '?n=' . FEED_LIMIT;
 	downloadFeed($downloadUrl, $dir, 0);
 }
