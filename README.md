@@ -8,6 +8,9 @@ Howto:
 1. Grab Cookie header information you are using with Google Reader when logged in and put it in `./cookieheader.conf`.
    The cookie data must definitely contain `SID` and `HSID` params.
 
+   Example of cookieheader data captured in standard F12 Google Chrome tool:
+   ![Example of cookieheader data](/cookieheader.png "Example of cookieheader data")
+
 2. Run script: `php export.php`
 
 3. Profit
