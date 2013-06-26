@@ -35,7 +35,7 @@ function getApiResponse(\HttpRequest $request) {
 }
 
 function getContinuation($string) {
-	if (preg_match('~.*<gr:continuation>(?P<cont>[0-9a-zA-Z]*)</gr:continuation>.*~', $string, $matches)) {
+	if (preg_match('~.*<gr:continuation>(?P<cont>.*)</gr:continuation>.*~', $string, $matches)) {
 		return $matches['cont'];
 	}
 
